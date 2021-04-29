@@ -1,12 +1,23 @@
-# @summary A short summary of the purpose of this class
+# @summary
+#  This is main class for hosts_manager module.
 #
-# A description of what this class does
+#  The host resource type installs and manages host entries in machine (both windows and redhat based linux).
+#  It accepts hostname and ipaddress as string parameters.
 #
 # @example
-#   include hosts_manager
+#  class { 'ssh':
+#     hostname  => 'hostname.server.name',
+#     ipaddress => '109.131.4.22',
+#  }
+#
+# @param hostname
+#   hostname as a string value such as 'hostname.server'.
+# @param ipaddress
+#   ipaddress as a string value in valid ipaddress format such as '109.131.4.222'.
+#
 class hosts_manager (
-  String $hostname, #'dummy.server11.com'
-  String $ipaddress,#'109.131.4.222'
+  String $hostname,
+  String $ipaddress,
 ){
   case $facts['kernel'] {
     'windows': {
